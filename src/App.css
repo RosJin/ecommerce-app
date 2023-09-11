@@ -36,6 +36,9 @@ a {
     box-shadow: none;
     border-color: inherit;
 }
+.gap-5 {
+    gap: 5px;
+}
 .gap-10 {
     gap: 10px;
 }
@@ -161,8 +164,7 @@ a {
 }
 
 /* home wrapper 2 */
-.home-wrapper-2,
-.marquee-wrapper {
+.home-wrapper-2 {
     background-color: var(--color-f5f5f7);
 }
 /* home wrapper 2 ends */
@@ -208,10 +210,10 @@ a {
     border-radius: 10px;
     overflow: hidden;
 }
-.product-card .product-image{
+.product-card .product-image {
     height: 270px;
 }
-.product-card .product-image img{
+.product-card .product-image img {
     object-fit: contain;
 }
 .product-card .product-image > img:last-child {
@@ -248,6 +250,43 @@ a {
     right: 15px;
 }
 /* Product Card ends here */
+
+/* Special Product */
+.special-product-card {
+    padding: 20px 10px;
+    border-radius: 10px;
+    background-color: white;
+}
+/* Special Product ends here */
+
+/* Famous card */
+.famous-card .famous-content {
+    top: 10%;
+    left: 5%;
+}
+.famous-card img{
+    border-radius: 10px;
+}
+.famous-content h5 {
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 400px;
+    color: white;
+    margin-bottom: 7px;
+}
+.famous-content h6 {
+    font-size: 24px;
+    line-height: 38px;
+    font-weight: 500;
+    color: white;
+}
+.famous-content p {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 100;
+    color: white;
+}
+/* Famous card ends here */
 
 /* Blog Part */
 .blog-card {
