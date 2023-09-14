@@ -15,7 +15,7 @@ const BlogCard = () => {
                     iusto dolorem dignissimos! Officiis minus magnam laboriosam cupiditate nam nemo nisi libero qui
                     neque ratione? Odit, nobis!
                 </p>
-                <Link to="/" className="button">
+                <Link to="/blog/:id" className="button">
                     Read More
                 </Link>
             </div>
