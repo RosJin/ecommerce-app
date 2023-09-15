@@ -3,9 +3,16 @@ import BreadCrumb from "../components/BreadCrumb";
 import Meta from "../components/Meta";
 import ProductCard from "../components/ProductCard";
 import ReactStars from "react-rating-stars-component";
+import ReactImageZoom from "react-image-zoom";
 
 const SingleProduct = () => {
     const [orderedProduct, setorderedProduct] = useState(true);
+    const props = {
+        width: 400,
+        height: 500,
+        zoomWidth: 500,
+        img: "https://transform.octanecdn.com/crop/700x650/https://dynamix-cdn.s3.amazonaws.com/jacobandcocom/jacobandcocom_260930875.png",
+    };
     return (
         <>
             <Meta title={"Product Name"} />
@@ -13,8 +20,52 @@ const SingleProduct = () => {
             <div className="main-product-wrapper py-5 home-wrapper-2">
                 <div className="container-xxl">
                     <div className="row">
-                        <div className="col-6"></div>
-                        <div className="col-6"></div>
+                        <div className="col-6">
+                            <div className="main-product-image">
+                                <div>
+                                    <ReactImageZoom {...props} />
+                                </div>
+                            </div>
+                            <div className="other-product-images d-flex flex-wrap gap-15">
+                                <div>
+                                    <img
+                                        src="https://transform.octanecdn.com/crop/700x650/https://dynamix-cdn.s3.amazonaws.com/jacobandcocom/jacobandcocom_260930875.png"
+                                        className="img-fluid"
+                                        alt=""
+                                    />
+                                </div>
+                                <div>
+                                    <img
+                                        src="https://transform.octanecdn.com/crop/700x650/https://dynamix-cdn.s3.amazonaws.com/jacobandcocom/jacobandcocom_260930875.png"
+                                        className="img-fluid"
+                                        alt=""
+                                    />
+                                </div>
+                                <div>
+                                    <img
+                                        src="https://transform.octanecdn.com/crop/700x650/https://dynamix-cdn.s3.amazonaws.com/jacobandcocom/jacobandcocom_260930875.png"
+                                        className="img-fluid"
+                                        alt=""
+                                    />
+                                </div>
+                                <div>
+                                    <img
+                                        src="https://transform.octanecdn.com/crop/700x650/https://dynamix-cdn.s3.amazonaws.com/jacobandcocom/jacobandcocom_260930875.png"
+                                        className="img-fluid"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-6">
+                            <div className="main-product-details">
+                                <div>
+                                    <h3>
+                                        Kids Headphone Bulk 10 Pack Multi Colored For Students
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -36,7 +87,7 @@ const SingleProduct = () => {
             </div>
             <section className="reviews-wrapper home-wrapper-2">
                 <div className="container-xxl">
-                    <div className="row">  
+                    <div className="row">
                         <div className="col-12">
                             <h3>Reviews</h3>
                             <div className="review-inner-wrapper">
