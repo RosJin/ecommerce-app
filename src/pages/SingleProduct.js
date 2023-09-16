@@ -7,14 +7,24 @@ import ReactImageZoom from "react-image-zoom";
 import Color from "../components/Color";
 import { TbGitCompare } from "react-icons/tb";
 import { AiOutlineHeart } from "react-icons/ai";
+import watch from '../images/watch.jpg';
 
 const SingleProduct = () => {
-    const [orderedProduct, setorderedProduct] = useState(true);
     const props = {
         width: 400,
         height: 600,
         zoomWidth: 600,
         img: "https://transform.octanecdn.com/crop/700x650/https://dynamix-cdn.s3.amazonaws.com/jacobandcocom/jacobandcocom_260930875.png",
+    };
+    const [orderedProduct, setorderedProduct] = useState(true);
+    const copyToClipboard = (text) => {
+        console.log("text", text);
+        var textField = document.createElement("textarea");
+        textField.innerText = text;
+        document.body.appendChild(textField);
+        textField.select();
+        document.execCommand("copy");
+        textField.remove();
     };
     return (
         <>
@@ -75,7 +85,7 @@ const SingleProduct = () => {
                                         Write a Review
                                     </a>
                                 </div>
-                                <div className="border-bottom py-3">
+                                <div className=" py-3">
                                     <div className="d-flex gap-10 align-items-center my-2">
                                         <h3 className="product-heading">Type :</h3>
                                         <p className="product-data">Watch</p>
@@ -149,6 +159,27 @@ const SingleProduct = () => {
                                                 Add to Wishlist
                                             </a>
                                         </div>
+                                    </div>
+                                    <div className="d-flex gap-10 flex-column my-3">
+                                        <h3 className="product-heading">Shipping & Return :</h3>
+                                        <p className="product-data">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /> Dicta
+                                            corrupti repudiandae nemo at ullam rerum
+                                            <b>5-10 business days</b>
+                                        </p>
+                                    </div>
+                                    <div className="d-flex gap-10 align-items-center my-3">
+                                        <h3 className="product-heading">Product Link :</h3>
+                                        <a
+                                            href="javascript:void(0)"
+                                            onClick={() => {
+                                                copyToClipboard(
+                                                    "https://transform.octanecdn.com/crop/700x650/https://dynamix-cdn.s3.amazonaws.com/jacobandcocom/jacobandcocom_260930875.png",
+                                                );
+                                            }}
+                                        >
+                                            Copy Product Link
+                                        </a>
                                     </div>
                                 </div>
                             </div>
