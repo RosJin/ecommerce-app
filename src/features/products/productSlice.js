@@ -23,7 +23,6 @@ export const addToWishlist = createAsyncThunk(
     },
 );
 
-// addToWishlist
 
 const productState = {
     product: "",
