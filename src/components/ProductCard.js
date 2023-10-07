@@ -51,7 +51,7 @@ const ProductCard = (props) => {
                                 </div>
                                 <div className="product-image">
                                     <img
-                                        src={item.images.url}
+                                        src={item?.images.url}
                                         className="img-fluid"
                                         alt="product imag"
                                     />
