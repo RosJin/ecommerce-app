@@ -50,8 +50,8 @@ const Wishlist = () => {
                                     <div className="wishlist-card-image">
                                         <img
                                             src={
-                                                item?.images[0].url
-                                                    ? item?.images[0].url
+                                                item?.images.url
+                                                    ? item?.images.url
                                                     : "images/watch.jpg"
                                             }
                                             alt="watch"
