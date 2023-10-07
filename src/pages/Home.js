@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import BlogCard from "../components/BlogCard";
 import ProductCard from "../components/ProductCard";
@@ -22,6 +22,7 @@ const Home = () => {
     const blogState = useSelector((state) => state.blog.blog);
     const productState = useSelector((state) => state.product.product);
 
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const getBlogs = () => {
@@ -219,15 +220,7 @@ const Home = () => {
                             if (item.tags === "featured") {
                                 return (
                                     <div key={index} className="col-3">
-                                        <Link
-                                            // to={`${
-                                            //     location.pathname === "/"
-                                            //         ? "/product/:id"
-                                            //         : location.pathname === "/product/:id"
-                                            //         ? "/product/:id"
-                                            //         : ":id"
-                                            // }`}
-                                            className="product-card position-relative">
+                                        <div className="product-card position-relative">
                                             <div className="wishlist-icon position-absolute">
                                                 <button
                                                     className="border-0 bg-transparent"
@@ -281,6 +274,12 @@ const Home = () => {
                                                     </button>
                                                     <button className="border-0 bg-transparent">
                                                         <img
+                                                            onClick={() =>
+                                                                navigate(
+                                                                    "/product/" +
+                                                                        item?._id,
+                                                                )
+                                                            }
                                                             src={view}
                                                             alt="view"
                                                         />
@@ -293,7 +292,7 @@ const Home = () => {
                                                     </button>
                                                 </div>
                                             </div>
-                                        </Link>
+                                        </div>
                                     </div>
                                 );
                             }
@@ -373,6 +372,7 @@ const Home = () => {
                                 return (
                                     <SpecialProduct
                                         key={index}
+                                        id={item?._id}
                                         brand={item?.brand}
                                         title={item?.title}
                                         totalrating={item?.totalrating.toString()}
@@ -399,15 +399,7 @@ const Home = () => {
                             if (item.tags === "popular") {
                                 return (
                                     <div key={index} className="col-3">
-                                        <Link
-                                            // to={`${
-                                            //     location.pathname === "/"
-                                            //         ? "/product/:id"
-                                            //         : location.pathname === "/product/:id"
-                                            //         ? "/product/:id"
-                                            //         : ":id"
-                                            // }`}
-                                            className="product-card position-relative">
+                                        <div className="product-card position-relative">
                                             <div className="wishlist-icon position-absolute">
                                                 <button
                                                     className="border-0 bg-transparent"
@@ -461,6 +453,12 @@ const Home = () => {
                                                     </button>
                                                     <button className="border-0 bg-transparent">
                                                         <img
+                                                            onClick={() =>
+                                                                navigate(
+                                                                    "/product/" +
+                                                                        item?._id,
+                                                                )
+                                                            }
                                                             src={view}
                                                             alt="view"
                                                         />
@@ -473,7 +471,7 @@ const Home = () => {
                                                     </button>
                                                 </div>
                                             </div>
-                                        </Link>
+                                        </div>
                                     </div>
                                 );
                             }

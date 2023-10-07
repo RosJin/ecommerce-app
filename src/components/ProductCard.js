@@ -22,7 +22,7 @@ const ProductCard = (props) => {
     return (
         <>
             {
-                data?.map((item, index) => {
+                data && data?.map((item, index) => {
                     return (
                         <div
                             key={index}
@@ -31,14 +31,8 @@ const ProductCard = (props) => {
                                     ? `gr-${grid}`
                                     : "col-3"
                             }`}>
-                            <Link
-                                // to={`${
-                                //     location.pathname === "/"
-                                //         ? "/product/:id"
-                                //         : location.pathname === "/product/:id"
-                                //         ? "/product/:id"
-                                //         : ":id"
-                                // }`}
+                            <div
+                                
                                 className="product-card position-relative">
                                 <div className="wishlist-icon position-absolute">
                                     <button
@@ -91,15 +85,15 @@ const ProductCard = (props) => {
                                                 alt="compare"
                                             />
                                         </button>
-                                        <button className="border-0 bg-transparent">
+                                        <Link to={`/product/`+item?._id} className="border-0 bg-transparent">
                                             <img src={view} alt="view" />
-                                        </button>
+                                        </Link>
                                         <button className="border-0 bg-transparent">
                                             <img src={addcart} alt="add cart" />
                                         </button>
                                     </div>
                                 </div>
-                            </Link>
+                            </div>
                         </div>
                     );
                 })}
