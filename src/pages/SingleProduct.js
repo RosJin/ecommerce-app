@@ -9,34 +9,47 @@ import { TbGitCompare } from "react-icons/tb";
 import { AiOutlineHeart } from "react-icons/ai";
 import watch from "../images/watch.jpg";
 import Container from "../components/Container";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAProduct } from "../features/products/productSlice";
 import { toast } from "react-toastify";
-import { addProdToCart } from "../features/user/userSlice";
+import { addProdToCart, getUserCart } from "../features/user/userSlice";
 
 const SingleProduct = () => {
-    const [color, setColor] = useState(null)
-    const [quantity, setQuantity] = useState(1)
+    const [color, setColor] = useState(null);
+    const [quantity, setQuantity] = useState(1);
+    const [alreadyAdded, serAlreadyAdded] = useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
     const getProductId = location.pathname.split("/")[2];
     const dispatch = useDispatch();
     const productState = useSelector((state) => state.product.singleproduct);
+    const cartState = useSelector((state) => state.auth.cartProducts);
     useEffect(() => {
         dispatch(getAProduct(getProductId));
+        dispatch(getUserCart());
     }, []);
-
+    useEffect(() => {
+        for (let index = 0; index < cartState.length; index++) {
+            if (getProductId === cartState[index]?.productId?._id) {
+                serAlreadyAdded(true);
+            }
+        }
+    });
     const uploadCart = () => {
-        if(color === null){
-            toast.error("Please Choose Color")
-            return false
-        }else{
-            dispatch(addProdToCart({
-                productId: productState?._id,
-                quantity,
-                color,
-                price:productState?.price
-            }))
+        if (color === null) {
+            toast.error("Please Choose Color");
+            return false;
+        } else {
+            dispatch(
+                addProdToCart({
+                    productId: productState?._id,
+                    quantity,
+                    color,
+                    price: productState?.price,
+                }),
+            );
+            navigate("/cart");
         }
     };
 
@@ -156,42 +169,68 @@ const SingleProduct = () => {
                                         </span>
                                     </div>
                                 </div>
-                                <div className="d-flex gap-10 flex-column mt-2 mb-3">
-                                    <h3 className="product-heading">Color:</h3>
-                                    <Color setColor={setColor} colorData={productState?.color} />
-                                </div>
+                                {alreadyAdded === false && (
+                                    <>
+                                        <div className="d-flex gap-10 flex-column mt-2 mb-3">
+                                            <h3 className="product-heading">
+                                                Color:
+                                            </h3>
+                                            <Color
+                                                setColor={setColor}
+                                                colorData={productState?.color}
+                                            />
+                                        </div>
+                                    </>
+                                )}
                                 <div className="d-flex align-items-center gap-15 flex-row mt-2 mb-3">
-                                    <h3 className="product-heading">
-                                        Quantity:
-                                    </h3>
-                                    <div className="">
-                                        <input
-                                            type="number"
-                                            name=""
-                                            min={1}
-                                            max={999}
-                                            className="form-control"
-                                            style={{ width: "70px" }}
-                                            id=""
-                                            onChange={(e)=>setQuantity(e.target.value)}
-                                            value={quantity}
-                                        />
-                                    </div>
-                                    <div className="d-flex align-items-center gap-30 ms-5">
+                                    {alreadyAdded === false && (
+                                        <>
+                                            <h3 className="product-heading">
+                                                Quantity:
+                                            </h3>
+                                            <div className="">
+                                                <input
+                                                    type="number"
+                                                    name=""
+                                                    min={1}
+                                                    max={999}
+                                                    className="form-control"
+                                                    style={{ width: "70px" }}
+                                                    id=""
+                                                    onChange={(e) =>
+                                                        setQuantity(
+                                                            e.target.value,
+                                                        )
+                                                    }
+                                                    value={quantity}
+                                                />
+                                            </div>
+                                        </>
+                                    )}
+                                    <div
+                                        className={
+                                            alreadyAdded
+                                                ? "ms-0"
+                                                : "ms-5" +
+                                                  "d-flex align-items-center gap-30 ms-5"
+                                        }>
                                         <button
                                             className="button border-0"
                                             // data-bs-toggle="modal"
                                             // data-bs-target="#staticBackdrop"
                                             type="button"
-                                            
                                             onClick={() => {
-                                                uploadCart();
+                                                alreadyAdded
+                                                    ? navigate("/cart")
+                                                    : uploadCart();
                                             }}>
-                                            Add to Cart
+                                            {alreadyAdded
+                                                ? "Go to Cart"
+                                                : "Add to Cart"}
                                         </button>
-                                        <button className="button signup">
+                                        {/* <button className="button signup">
                                             Buy It Now
-                                        </button>
+                                        </button> */}
                                     </div>
                                 </div>
                                 <div className="d-flex align-items-center gap-15">
