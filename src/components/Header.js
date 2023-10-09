@@ -1,19 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
 const Header = () => {
+    const dispatch = useDispatch();
+    const cartState = useSelector((state) => state.auth.cartProducts);
+    const [total, setTotal] = useState(null);
+
+    useEffect(() => {
+        let sum = 0;
+        for (let index = 0; index < cartState?.length; index++) {
+            sum =
+                sum +
+                Number(cartState[index].quantity) *
+                    Number(cartState[index].price);
+            setTotal(sum);
+        }
+    }, [cartState]);
     return (
         <>
             <header className="header-top-strip py-3">
                 <div className="container-xxl">
                     <div className="row">
                         <div className="col-6">
-                            <p className="text-white mb-0">Free Ship Khi Mua Hàng Và Miễn Phí Hoàn Trả</p>
+                            <p className="text-white mb-0">
+                                Free Ship Khi Mua Hàng Và Miễn Phí Hoàn Trả
+                            </p>
                         </div>
                         <div className="col-6">
                             <p className="text-end text-white mb-0">
                                 Số điện thoại:{" "}
-                                <a className="text-white" href="tel:+84 0907093021">
+                                <a
+                                    className="text-white"
+                                    href="tel:+84 0907093021">
                                     +84 0907093021
                                 </a>
                             </p>
@@ -38,7 +57,9 @@ const Header = () => {
                                     aria-label="Search Product Here..."
                                     aria-describedby="basic-addon2"
                                 />
-                                <span className="input-group-text p-3" id="basic-addon2">
+                                <span
+                                    className="input-group-text p-3"
+                                    id="basic-addon2">
                                     <BsSearch className="fs-6" />
                                 </span>
                             </div>
@@ -46,23 +67,35 @@ const Header = () => {
                         <div className="col-5">
                             <div className="header-upper-links d-flex align-items-center justify-content-between">
                                 <div>
-                                    <Link to="/compare-product" className="d-flex align-items-center gap-10 text-white">
-                                        <img src="images/compare.svg" alt="compare" />
+                                    <Link
+                                        to="/compare-product"
+                                        className="d-flex align-items-center gap-10 text-white">
+                                        <img
+                                            src="images/compare.svg"
+                                            alt="compare"
+                                        />
                                         <p className="mb-0">
                                             Compare <br /> Products
                                         </p>
                                     </Link>
                                 </div>
                                 <div>
-                                    <Link to="/wishlist" className="d-flex align-items-center gap-10 text-white">
-                                        <img src="images/wishlist.svg" alt="whishlist" />
+                                    <Link
+                                        to="/wishlist"
+                                        className="d-flex align-items-center gap-10 text-white">
+                                        <img
+                                            src="images/wishlist.svg"
+                                            alt="whishlist"
+                                        />
                                         <p className="mb-0">
                                             Favourite <br /> wishlist
                                         </p>
                                     </Link>
                                 </div>
                                 <div>
-                                    <Link to="/login" className="d-flex align-items-center gap-10 text-white">
+                                    <Link
+                                        to="/login"
+                                        className="d-flex align-items-center gap-10 text-white">
                                         <img src="images/user.svg" alt="user" />
                                         <p className="mb-0">
                                             Login <br /> My Account
@@ -70,11 +103,15 @@ const Header = () => {
                                     </Link>
                                 </div>
                                 <div>
-                                    <Link to="/cart" className="d-flex align-items-center gap-10 text-white">
+                                    <Link
+                                        to="/cart"
+                                        className="d-flex align-items-center gap-10 text-white">
                                         <img src="images/cart.svg" alt="cart" />
                                         <div className="d-flex flex-column gap-10">
-                                            <span className="badge bg-white text-dark">0</span>
-                                            <p className="mb-0">$ 5000</p>
+                                            <span className="badge bg-white text-dark">
+                                                {cartState?.length ? cartState?.length : 0}
+                                            </span>
+                                            <p className="mb-0">$ {total ? total : 0}</p>
                                         </div>
                                     </Link>
                                 </div>
@@ -95,24 +132,33 @@ const Header = () => {
                                             type="button"
                                             id="dropdownMenuButton1"
                                             data-bs-toggle="dropdown"
-                                            aria-expanded="false"
-                                        >
+                                            aria-expanded="false">
                                             <img src="images/menu.svg" alt="" />
-                                            <span className="me-5 d-inline-block">Shop Categories</span>
+                                            <span className="me-5 d-inline-block">
+                                                Shop Categories
+                                            </span>
                                         </button>
-                                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <ul
+                                            className="dropdown-menu"
+                                            aria-labelledby="dropdownMenuButton1">
                                             <li>
-                                                <Link className="dropdown-item text-white" to="">
+                                                <Link
+                                                    className="dropdown-item text-white"
+                                                    to="">
                                                     Action
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link className="dropdown-item text-white" to="">
+                                                <Link
+                                                    className="dropdown-item text-white"
+                                                    to="">
                                                     Another action
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link className="dropdown-item text-white" to="">
+                                                <Link
+                                                    className="dropdown-item text-white"
+                                                    to="">
                                                     Something else here
                                                 </Link>
                                             </li>
@@ -122,7 +168,9 @@ const Header = () => {
                                 <div className="menu-links">
                                     <div className="d-flex align-items-center gap-15">
                                         <NavLink to="/">Home</NavLink>
-                                        <NavLink to="/product">Our Store</NavLink>
+                                        <NavLink to="/product">
+                                            Our Store
+                                        </NavLink>
                                         <NavLink to="/blogs">Blogs</NavLink>
                                         <NavLink to="/contact">Contact</NavLink>
                                     </div>
