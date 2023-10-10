@@ -20,11 +20,11 @@ const SingleProduct = () => {
     const [quantity, setQuantity] = useState(1);
     const [alreadyAdded, serAlreadyAdded] = useState(false);
     const location = useLocation();
-    const navigate = useNavigate();
     const getProductId = location.pathname.split("/")[2];
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const productState = useSelector((state) => state.product.singleproduct);
-    const cartState = useSelector((state) => state.auth.cartProducts);
+    const cartState = useSelector((state) => state.auth?.cartProducts ?? []);
     useEffect(() => {
         dispatch(getAProduct(getProductId));
         dispatch(getUserCart());
