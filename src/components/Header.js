@@ -98,7 +98,7 @@ const Header = () => {
                                         to={
                                             authState?.user === null
                                                 ? "/login"
-                                                : ""
+                                                : "/my-profile"
                                         }
                                         className="d-flex align-items-center gap-10 text-white">
                                         <img src="images/user.svg" alt="user" />
@@ -187,6 +187,7 @@ const Header = () => {
                                         <NavLink to="/product">
                                             Our Store
                                         </NavLink>
+                                        <NavLink to="/my-orders">My Orders</NavLink>
                                         <NavLink to="/blogs">Blogs</NavLink>
                                         <NavLink to="/contact">Contact</NavLink>
                                     </div>
