@@ -99,7 +99,7 @@ const Checkout = () => {
     useEffect(()=>{
         let items = []
         for(let index = 0; index < cartState?.length; index++) {
-            items.push({product:cartState[index].productId._id,quantity:cartState[index].quantity,color:cartState[index].color._id,price:cartState[index].price})
+            items.push({product:cartState[index].productId._id,quantity:cartState[index].quantity,price:cartState[index].price})
         }
         setCartProductState(items)
     },[])
@@ -378,9 +378,7 @@ const Checkout = () => {
                                                     <h5 className="total-price">
                                                         {item?.productId?.title}
                                                     </h5>
-                                                    <p className="total-price">
-                                                        {item?.color?.title}
-                                                    </p>
+                                                   
                                                 </div>
                                             </div>
                                             <div className="flex-grow-1">

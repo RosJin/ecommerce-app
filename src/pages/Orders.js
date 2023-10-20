@@ -77,11 +77,7 @@ const Orders = () => {
                                                         Price
                                                     </h6>
                                                 </div>
-                                                <div className="col-3">
-                                                    <h6 className="text-white">
-                                                        Color
-                                                    </h6>
-                                                </div>
+                                                
                                                 {item?.orderItems?.map(
                                                     (item, index) => {
                                                         return (
@@ -112,15 +108,7 @@ const Orders = () => {
                                                                             }
                                                                         </p>
                                                                     </div>
-                                                                    <div className="col-3">
-                                                                        <ul className="colors ps-0">
-                                                                            <li
-                                                                                style={{
-                                                                                    backgroundColor:
-                                                                                        item?.color,
-                                                                                }}></li>
-                                                                        </ul>
-                                                                    </div>
+                                                                    
                                                                 </div>
                                                             </div>
                                                         );

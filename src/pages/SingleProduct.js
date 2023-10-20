@@ -4,7 +4,6 @@ import Meta from "../components/Meta";
 import ProductCard from "../components/ProductCard";
 import ReactStars from "react-rating-stars-component";
 import ReactImageZoom from "react-image-zoom";
-import Color from "../components/Color";
 import { TbGitCompare } from "react-icons/tb";
 import { AiOutlineHeart } from "react-icons/ai";
 import watch from "../images/watch.jpg";
@@ -16,7 +15,7 @@ import { toast } from "react-toastify";
 import { addProdToCart, getUserCart } from "../features/user/userSlice";
 
 const SingleProduct = () => {
-    const [color, setColor] = useState(null);
+   
     const [quantity, setQuantity] = useState(1);
     const [alreadyAdded, serAlreadyAdded] = useState(false);
     const location = useLocation();
@@ -39,20 +38,17 @@ const SingleProduct = () => {
         }
     });
     const uploadCart = () => {
-        if (color === null) {
-            toast.error("Please Choose Color");
-            return false;
-        } else {
+       
             dispatch(
                 addProdToCart({
                     productId: productState?._id,
                     quantity,
-                    color,
+                 
                     price: productState?.price,
                 }),
             );
             navigate("/cart");
-        }
+       
     };
 
     const props = {
@@ -207,19 +203,7 @@ const SingleProduct = () => {
                                         </span>
                                     </div>
                                 </div>
-                                {alreadyAdded === false && (
-                                    <>
-                                        <div className="d-flex gap-10 flex-column mt-2 mb-3">
-                                            <h3 className="product-heading">
-                                                Color:
-                                            </h3>
-                                            <Color
-                                                setColor={setColor}
-                                                colorData={productState?.color}
-                                            />
-                                        </div>
-                                    </>
-                                )}
+                               
                                 <div className="d-flex align-items-center gap-15 flex-row mt-2 mb-3">
                                     {alreadyAdded === false && (
                                         <>

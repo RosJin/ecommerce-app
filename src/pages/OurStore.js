@@ -3,7 +3,6 @@ import BreadCrumb from "../components/BreadCrumb";
 import Meta from "../components/Meta";
 import ReactStars from "react-rating-stars-component";
 import ProductCard from "../components/ProductCard";
-import Color from "../components/Color";
 import Container from "../components/Container";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../features/products/productSlice";
@@ -26,13 +25,13 @@ const OurStore = () => {
         let newBrands = [];
         let category = [];
         let newtags = [];
-        let newColors = [];
+        
         for (let index = 0; index < productState.length; index++) {
             const element = productState[index];
             newBrands.push(element.brand);
             category.push(element.category);
             newtags.push(element.tags);
-            newColors.push(element.color);
+           
         }
         setBrands(newBrands);
         setCategories(category);
