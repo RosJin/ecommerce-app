@@ -45,7 +45,7 @@ const ProductCard = (props) => {
                                 </div>
                                 <div className="product-image">
                                     <img
-                                        src={item?.images.url}
+                                        src={item?.images[0]?.url}
                                         className="img-fluid"
                                         alt="product imag"
                                     />
@@ -75,7 +75,7 @@ const ProductCard = (props) => {
                                         dangerouslySetInnerHTML={{
                                             __html: item.description,
                                         }}></p>
-                                    <p className="price">$ {item.price}</p>
+                                    <p className="price">$ {item.price.toLocaleString('vi-VN')}</p>
                                 </div>
                                 <div className="action-bar position-absolute">
                                     <div className="d-flex flex-column gap-15">

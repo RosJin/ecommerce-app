@@ -3,7 +3,7 @@ import BreadCrumb from "../components/BreadCrumb";
 import Meta from "../components/Meta";
 import Container from "../components/Container";
 import CustomInput from "../components/CustomInput";
-import { useLocation,Link, useNavigate  } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,18 +15,19 @@ const passwordSchema = yup.object({
 
 const Resetpassword = () => {
     const location = useLocation();
-    const getToken = location.pathname.split("/")[2];
-    console.log(getToken)
+    const getToken = location.pathname.split("/")[2]
+    console.log(getToken);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const formik = useFormik({
         initialValues: {
-           
             password: "",
         },
         validationSchema: passwordSchema,
         onSubmit: (values) => {
-            dispatch(resetPassword({token:getToken,password:values.password}));
+            dispatch(
+                resetPassword({ token: getToken, password: values.password }),
+            );
             navigate("/login");
         },
     });

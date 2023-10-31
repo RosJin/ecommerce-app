@@ -731,3 +731,8 @@ footer .input-group-text {
     color: red;
     font-size: 12px;
 }
+
+.carousel-image {
+    width: 100%; /* Đảm bảo hình ảnh nằm trong kích thước của container */
+    height: auto; /* Đảm bảo tỷ lệ khung hình không bị biến đổi */
+  }

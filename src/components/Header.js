@@ -6,6 +6,7 @@ import { Typeahead } from "react-bootstrap-typeahead";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 import { getAProduct } from "../features/products/productSlice";
 import { getUserCart } from "../features/user/userSlice";
+import { BiLogOutCircle } from "react-icons/bi";
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -17,29 +18,29 @@ const Header = () => {
     const [paginate, setPaginate] = useState(true);
     const navigate = useNavigate();
 
-    const location = useLocation()
-    useEffect(()=>{
-        window.scrollTo(0,0)
-    },[location])
+    const location = useLocation();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location]);
 
     const getTokenFromLocalStorage = localStorage.getItem("customer")
-    ? JSON.parse(localStorage.getItem("customer"))
-    : null;
+        ? JSON.parse(localStorage.getItem("customer"))
+        : null;
 
     const config2 = {
-    headers: {
-        Authorization: `Bearer ${
-            getTokenFromLocalStorage !== null
-                ? getTokenFromLocalStorage.token
-                : ""
-        }`,
-        Accept: "application/json",
-    },
-};
+        headers: {
+            Authorization: `Bearer ${
+                getTokenFromLocalStorage !== null
+                    ? getTokenFromLocalStorage.token
+                    : ""
+            }`,
+            Accept: "application/json",
+        },
+    };
 
-    useEffect(()=>{
-        dispatch(getUserCart(config2))
-    },[])
+    useEffect(() => {
+        dispatch(getUserCart(config2));
+    }, []);
 
     useEffect(() => {
         let sum = 0;
@@ -67,26 +68,8 @@ const Header = () => {
     };
     return (
         <>
-            <header className="header-top-strip py-3">
-                <div className="container-xxl">
-                    <div className="row">
-                        <div className="col-6">
-                            <p className="text-white mb-0">
-                                Free Ship Khi Mua Hàng Và Miễn Phí Hoàn Trả
-                            </p>
-                        </div>
-                        <div className="col-6">
-                            <p className="text-end text-white mb-0">
-                                Số điện thoại:{" "}
-                                <a
-                                    className="text-white"
-                                    href="tel:+84 0907093021">
-                                    +84 0907093021
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <header className="header-top-strip">
+                <img src="./images/unnamed.webp" className="w-100"alt="" />
             </header>
             <header className="header-upper py-3">
                 <div className="container-xxl">
@@ -107,13 +90,15 @@ const Header = () => {
                                         navigate(
                                             `/product/${selected[0]?.prod}`,
                                         );
-                                        dispatch(getAProduct(selected[0]?.prod))
+                                        dispatch(
+                                            getAProduct(selected[0]?.prod),
+                                        );
                                     }}
                                     options={productOpt}
                                     paginate={paginate}
                                     labelKey={"name"}
                                     minLength={2}
-                                    placeholder="Search for Products here..."
+                                    placeholder="Bạn cần tìm gì?"
                                 />
                                 <span
                                     className="input-group-text p-3"
@@ -125,19 +110,6 @@ const Header = () => {
                         <div className="col-5">
                             <div className="header-upper-links d-flex align-items-center justify-content-between">
                                 <div>
-                                    {/* <Link
-                                        to="/compare-product"
-                                        className="d-flex align-items-center gap-10 text-white">
-                                        <img
-                                            src="images/compare.svg"
-                                            alt="compare"
-                                        />
-                                        <p className="mb-0">
-                                            Compare <br /> Products
-                                        </p>
-                                    </Link> */}
-                                </div>
-                                <div>
                                     <Link
                                         to="/wishlist"
                                         className="d-flex align-items-center gap-10 text-white">
@@ -146,7 +118,7 @@ const Header = () => {
                                             alt="whishlist"
                                         />
                                         <p className="mb-0">
-                                            Favourite <br /> wishlist
+                                            Danh sách <br /> yêu thích
                                         </p>
                                     </Link>
                                 </div>
@@ -161,14 +133,22 @@ const Header = () => {
                                         <img src="images/user.svg" alt="user" />
                                         {authState?.user === null ? (
                                             <p className="mb-0">
-                                                Login <br /> My Account
+                                                Đăng nhập <br /> Đăng ký
                                             </p>
                                         ) : (
                                             <p className="mb-0">
-                                                Welcome{" "}
+                                                Xin chào{" "} <br />
                                                 {authState?.user?.firstname}
                                             </p>
                                         )}
+                                    </Link>
+                                </div>
+                                <div>
+                                    <Link
+                                        className="d-flex align-items-center gap-10 text-white"
+                                        onClick={handleLogout}>
+                                        <BiLogOutCircle className="fs-2"/>
+                                        Đăng xuất
                                     </Link>
                                 </div>
                                 <div>
@@ -183,7 +163,7 @@ const Header = () => {
                                                     : 0}
                                             </span>
                                             <p className="mb-0">
-                                                $ {total ? total : 0}
+                                                Giỏ hàng
                                             </p>
                                         </div>
                                     </Link>
@@ -198,7 +178,7 @@ const Header = () => {
                     <div className="row">
                         <div className="col-12">
                             <div className="menu-bottom d-flex align-items-center gap-30">
-                                <div>
+                                {/* <div>
                                     <div className="dropdown">
                                         <button
                                             className="btn btn-secondary dropdown-toggle bg-transparent border-0 gap-15 d-flex align-items-center"
@@ -208,7 +188,7 @@ const Header = () => {
                                             aria-expanded="false">
                                             <img src="images/menu.svg" alt="" />
                                             <span className="me-5 d-inline-block">
-                                                Shop Categories
+                                                Danh mục
                                             </span>
                                         </button>
                                         <ul
@@ -218,43 +198,37 @@ const Header = () => {
                                                 <Link
                                                     className="dropdown-item text-white"
                                                     to="">
-                                                    Action
+                                                    Laptop
                                                 </Link>
                                             </li>
                                             <li>
                                                 <Link
                                                     className="dropdown-item text-white"
                                                     to="">
-                                                    Another action
+                                                    Laptop Gaming
                                                 </Link>
                                             </li>
                                             <li>
                                                 <Link
                                                     className="dropdown-item text-white"
                                                     to="">
-                                                    Something else here
+                                                    Bàn phím
                                                 </Link>
                                             </li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="menu-links">
                                     <div className="d-flex align-items-center gap-15">
-                                        <NavLink to="/">Home</NavLink>
+                                        <NavLink to="/">Trang chủ</NavLink>
                                         <NavLink to="/product">
-                                            Our Store
+                                            Danh sách sản phẩm
                                         </NavLink>
                                         <NavLink to="/my-orders">
-                                            My Orders
+                                            Tra cứu đơn hàng
                                         </NavLink>
-                                        <NavLink to="/blogs">Blogs</NavLink>
-                                        <NavLink to="/contact">Contact</NavLink>
-                                        <button
-                                            onClick={handleLogout}
-                                            className="border border-0 bg-transparent text-white text-uppercase"
-                                            type="button">
-                                            Logout
-                                        </button>
+                                        <NavLink to="/blogs">Tin công nghệ</NavLink>
+                                        <NavLink to="/contact">Liên hệ</NavLink>
                                     </div>
                                 </div>
                             </div>

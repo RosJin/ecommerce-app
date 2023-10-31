@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Component,  useRef  } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import BlogCard from "../components/BlogCard";
@@ -17,6 +17,9 @@ import ReactStars from "react-rating-stars-component";
 import prodcompare from "../images/prodcompare.svg";
 import addcart from "../images/add-cart.svg";
 import view from "../images/view.svg";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Home = () => {
     const blogState = useSelector((state) => state.blog.blog);
@@ -40,89 +43,68 @@ const Home = () => {
     const addToWish = (id) => {
         dispatch(addToWishlist(id));
     };
+
+    const sliderRef = useRef(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      sliderRef.current?.slickNext();
+    }, 2000); // Tự động cuộn sau mỗi 2 giây
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+    };
+
     return (
         <>
-            <Container class1="home-wrapper-1 py-5">
-                <div className="row">
-                    <div className="col-6">
-                        <div className="main-banner position-relative ">
+            <Container class1="home-wrapper-1 py-3">
+                <div>
+                    <Slider {...settings} ref={sliderRef}>
+                        <div>
                             <img
-                                src="images/main-banner-1.jpg"
-                                className="img-fluid rounded-3"
-                                alt="main banner"
+                                src="./images/banner1.webp"
+                                className="img-fluid w-100"
+                                alt=""
                             />
-                            <div className="main-banner-content position-absolute">
-                                <h4>SUPERCHARGED FOR PROS</h4>
-                                <h5>iPad S13+ Pro.</h5>
-                                <p>From $999.00 or $41.62/mo.</p>
-                                <Link className="button">BUY NOW</Link>
-                            </div>
                         </div>
-                    </div>
-                    <div className="col-6">
-                        <div className="d-flex flex-wrap gap-10 justify-content-between align-items-center">
-                            <div className="small-banner position-relative ">
-                                <img
-                                    src="images/catbanner-01.jpg"
-                                    className="img-fluid rounded-3"
-                                    alt="main banner"
-                                />
-                                <div className="small-banner-content position-absolute">
-                                    <h4>SUPERCHARGED FOR PROS</h4>
-                                    <h5>iPad S13+ Pro.</h5>
-                                    <p>
-                                        From $999.00 <br />
-                                        or $41.62/mo.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="small-banner position-relative ">
-                                <img
-                                    src="images/catbanner-02.jpg"
-                                    className="img-fluid rounded-3"
-                                    alt="main banner"
-                                />
-                                <div className="small-banner-content position-absolute">
-                                    <h4>SUPERCHARGED FOR PROS</h4>
-                                    <h5>iPad S13+ Pro.</h5>
-                                    <p>
-                                        From $999.00 <br />
-                                        or $41.62/mo.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="small-banner position-relative ">
-                                <img
-                                    src="images/catbanner-03.jpg"
-                                    className="img-fluid rounded-3"
-                                    alt="main banner"
-                                />
-                                <div className="small-banner-content position-absolute">
-                                    <h4>SUPERCHARGED FOR PROS</h4>
-                                    <h5>iPad S13+ Pro.</h5>
-                                    <p>
-                                        From $999.00 <br />
-                                        or $41.62/mo.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="small-banner position-relative ">
-                                <img
-                                    src="images/catbanner-04.jpg"
-                                    className="img-fluid rounded-3"
-                                    alt="main banner"
-                                />
-                                <div className="small-banner-content position-absolute">
-                                    <h4>SUPERCHARGED FOR PROS</h4>
-                                    <h5>iPad S13+ Pro.</h5>
-                                    <p>
-                                        From $999.00 <br />
-                                        or $41.62/mo.
-                                    </p>
-                                </div>
-                            </div>
+                        <div>
+                            <img
+                                src="./images/banner2.webp"
+                                className="img-fluid w-100"
+                                alt=""
+                            />
                         </div>
-                    </div>
+                        <div>
+                            <img
+                                src="./images/banner3.jpg"
+                                className="img-fluid w-100"
+                                alt=""
+                            />
+                        </div>
+                        <div>
+                            <img
+                                src="./images/banner4.jpg"
+                                className="img-fluid w-100"
+                                alt=""
+                            />
+                        </div>
+                        <div>
+                            <img
+                                src="./images/banner5.jpg"
+                                className="img-fluid w-100"
+                                alt=""
+                            />
+                        </div>
+                    </Slider>
                 </div>
             </Container>
             <Container class1="home-wrapper-2 py-5">
@@ -213,7 +195,7 @@ const Home = () => {
             <Container class1="featured-wrapper py-5 home-wrapper-2">
                 <div className="row">
                     <div className="col-12">
-                        <h3 className="section-heading">Featured Collection</h3>
+                        <h3 className="section-heading">Sản phẩm nổi bật</h3>
                     </div>
                     {productState &&
                         productState?.map((item, index) => {
@@ -362,7 +344,7 @@ const Home = () => {
             <Container class1="special-wrapper py-5 home-wrapper-2">
                 <div className="row">
                     <div className="col-12">
-                        <h3 className="section-heading">Special Products</h3>
+                        <h3 className="section-heading">Sản phẩm đặc biệt</h3>
                     </div>
                 </div>
                 <div className="row">
@@ -389,7 +371,7 @@ const Home = () => {
                 <div className="row">
                     <div className="col-12">
                         <h3 className="section-heading">
-                            Our Popular Products
+                            Sản phẩm phổ biến 
                         </h3>
                     </div>
                 </div>
@@ -539,7 +521,7 @@ const Home = () => {
             <Container class1="blog-wrapper py-5 home-wrapper-2">
                 <div className="row">
                     <div className="col-12">
-                        <h3 className="section-heading">Our Latest Blogs</h3>
+                        <h3 className="section-heading">Tin tức mới</h3>
                     </div>
                 </div>
                 <div className="row">
