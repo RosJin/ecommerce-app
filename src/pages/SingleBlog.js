@@ -25,7 +25,7 @@ const SingleBlog = () => {
     return (
         <>
             <Meta title={blogState?.title} />
-            <BreadCrumb title="Dynamic Blog Name" />
+            <BreadCrumb title={blogState?.title} />
             <Container class1="blog-wrapper home-wrapper-2 py-5">
                 <div className="row">
                     <div className="col-12">
@@ -34,11 +34,11 @@ const SingleBlog = () => {
                                 to="/blogs"
                                 className="d-flex align-items-center gap-10">
                                 <HiOutlineArrowLeft className="fs-4" />
-                                Go back to Blogs
+                                Quay lại trang tin tức
                             </Link>
                             <h3 className="title">{blogState?.title}</h3>
                             <img
-                                src={blogState?.images.url ? blogState?.images.url :blog}
+                                src={blogState?.images[0].url ? blogState?.images[0].url :blog}
                                 className="img-fluid w-100 my-4"
                                 alt="blog"
                             />

@@ -15,22 +15,22 @@ const Orders = () => {
     }, []);
     return (
         <>
-            <BreadCrumb title="My Orders" />
+            <BreadCrumb title="Đơn hàng của tôi" />
             <Container class1="cart-wrapper home-wrapper-2 py-5">
                 <div className="row">
                     <div className="col-12">
                         <div className="row">
                             <div className="col-3">
-                                <h5>Order Id</h5>
+                                <h5>Mã đơn hàng</h5>
                             </div>
                             <div className="col-3">
-                                <h5>Total Amount</h5>
+                                <h5>Tổng giá tiền</h5>
                             </div>
                             <div className="col-3">
-                                <h5>Total Amount affter Discount</h5>
+                                <h5>Tổng giá tiền sau khi giảm giá</h5>
                             </div>
                             <div className="col-3">
-                                <h5>Status</h5>
+                                <h5>Trạng thái đơn hàng</h5>
                             </div>
                         </div>
                     </div>
@@ -64,17 +64,17 @@ const Orders = () => {
                                                 }}>
                                                 <div className="col-3">
                                                     <h6 className="text-white">
-                                                        Product Name
+                                                        Tên sản phẩm
                                                     </h6>
                                                 </div>
                                                 <div className="col-3">
                                                     <h6 className="text-white">
-                                                        Quantity
+                                                        Số lượng
                                                     </h6>
                                                 </div>
                                                 <div className="col-3">
                                                     <h6 className="text-white">
-                                                        Price
+                                                        Giá
                                                     </h6>
                                                 </div>
                                                 

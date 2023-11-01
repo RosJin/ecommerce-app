@@ -22,7 +22,7 @@ const BlogCard = (props) => {
                         __html: description?.substr(0, 70) + "...",
                     }}></p>
                 <Link to={"/blog/" + id} className="button">
-                    Read More
+                    Xem tin
                 </Link>
             </div>
         </div>

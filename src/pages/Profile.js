@@ -10,13 +10,13 @@ import { FiEdit } from "react-icons/fi";
 // import Resetpassword from "./Resetpassword";
 
 const profileSchema = yup.object({
-    firstname: yup.string().required("First Name is Required"),
-    lastname: yup.string().required("Last Name is Required"),
+    firstname: yup.string().required("Vui lòng nhập tên"),
+    lastname: yup.string().required("Vui lòng nhập họ"),
     email: yup
         .string()
-        .email("Email Should be valid")
-        .required("Email Address is Required"),
-    mobile: yup.string().required("Mobile No is Required"),
+        .email("Email phải hợp lệ")
+        .required("Vui lòng nhập email"),
+    mobile: yup.string().required("Vui lòng nhập số điện thoại"),
 });
 
 const Profile = () => {
@@ -62,12 +62,12 @@ const Profile = () => {
 
     return (
         <>
-            <BreadCrumb title="My Profile" />
+            <BreadCrumb title="Hồ sơ người dùng" />
             <Container class1="cart-wrapper home-wrapper-2 py-5">
                 <div className="row">
                     <div className="col-12">
                         <div className="d-flex justify-content-between align-items-center">
-                            <h3 className="my-3">Update Profile</h3>
+                            <h3 className="my-3">Cập nhật hồ sơ người dùng</h3>
                             <FiEdit
                                 className="fs-3"
                                 onClick={() => setEdit(false)}
@@ -80,7 +80,7 @@ const Profile = () => {
                                 <label
                                     htmlFor="example1"
                                     className="form-label">
-                                    First Name
+                                    Tên
                                 </label>
                                 <input
                                     type="text"
@@ -101,7 +101,7 @@ const Profile = () => {
                                 <label
                                     htmlFor="example2"
                                     className="form-label">
-                                    Last Name
+                                    Họ
                                 </label>
                                 <input
                                     type="text"
@@ -122,7 +122,7 @@ const Profile = () => {
                                 <label
                                     htmlFor="exampleInputEmail1"
                                     className="form-label">
-                                    Email address
+                                    Địa chỉ email
                                 </label>
                                 <input
                                     type="email"
@@ -144,7 +144,7 @@ const Profile = () => {
                                 <label
                                     htmlFor="exampleInputEmail2"
                                     className="form-label">
-                                    Mobile No
+                                    Số điện thoại
                                 </label>
                                 <input
                                     type="number"
@@ -167,7 +167,7 @@ const Profile = () => {
                                 <button
                                     type="submit"
                                     className="btn btn-primary">
-                                    Save
+                                    Lưu
                                 </button>
                             )}
                             {/* <button onClick={handleChangePass}>Đổi mật khẩu</button> */}

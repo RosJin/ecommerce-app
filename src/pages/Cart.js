@@ -66,16 +66,16 @@ const Cart = () => {
     }, [userCartState]);
     return (
         <>
-            <Meta title={"Cart"} />
-            <BreadCrumb title="Cart" />
+            <Meta title={"Giỏ hàng"} />
+            <BreadCrumb title="Giỏ hàng" />
             <Container class1="cart-wrapper home-wrapper-2 py-5">
                 <div className="row">
                     <div className="col-12">
                         <div className="cart-header py-3 d-flex justify-content-between align-items-center">
-                            <h4 className="cart-col-1">Product</h4>
-                            <h4 className="cart-col-2">Price</h4>
-                            <h4 className="cart-col-3">Quantity</h4>
-                            <h4 className="cart-col-4">Total</h4>
+                            <h4 className="cart-col-1">Sản phẩm</h4>
+                            <h4 className="cart-col-2">Giá</h4>
+                            <h4 className="cart-col-3">Số lượng</h4>
+                            <h4 className="cart-col-4">Tổng giá tiền</h4>
                         </div>
                         {userCartState &&
                             userCartState?.map((item, index) => {
@@ -98,7 +98,7 @@ const Cart = () => {
                                         </div>
                                         <div className="cart-col-2">
                                             <h5 className="price">
-                                                $ {item?.price}
+                                                {item?.price.toLocaleString('vi-VN')} đ
                                             </h5>
                                         </div>
                                         <div className="cart-col-3 d-flex align-items-center gap-15">
@@ -137,7 +137,7 @@ const Cart = () => {
                                         </div>
                                         <div className="cart-col-4">
                                             <h5 className="price">
-                                                $ {item?.price * item?.quantity}
+                                                {item?.price * item?.quantity} đ
                                             </h5>
                                         </div>
                                     </div>
@@ -147,17 +147,16 @@ const Cart = () => {
                     <div className="col-12 py-2 mt-4">
                         <div className="d-flex justify-content-between align-items-baseline">
                             <Link to="/product" className="button">
-                                Continue To Shopping
+                                Tiếp tục mua hàng
                             </Link>
                             {(totalAmount !== null || totalAmount !== 0) && (
                                 <div className="d-flex flex-column align-items-end">
-                                    <h4>SubTotal : $ {totalAmount}</h4>
+                                    <h4>Tổng giá tiền : {totalAmount?.toLocaleString('vi-VN')} đ</h4>
                                     <p>
-                                        Taxes and shipping calculated at
-                                        checkout
+                                        Phí ship sẽ được tính sau khi thanh toán
                                     </p>
                                     <Link to="/checkout" className="button">
-                                        Checkout
+                                        Thanh toán
                                     </Link>
                                 </div>
                             )}

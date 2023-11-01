@@ -55,8 +55,8 @@ const SingleProduct = () => {
         width: 400,
         height: 600,
         zoomWidth: 600,
-        img: productState?.images?.url
-            ? productState?.images?.url
+        img: productState?.images[0]?.url
+            ? productState?.images[0]?.url
             : "https://transform.octanecdn.com/crop/700x650/https://dynamix-cdn.s3.amazonaws.com/jacobandcocom/jacobandcocom_260930875.png?fbclid=IwAR3eegv4MA0mtbwT_bDafmNqmu5cluLjGTOVggE3YWwbCdGHhhDGbEslffQ",
     };
     const [orderedProduct, setorderedProduct] = useState(true);
@@ -107,7 +107,7 @@ const SingleProduct = () => {
     };
     return (
         <>
-            <Meta title={"Product Name"} />
+            <Meta title={productState?.title} />
             <BreadCrumb title={productState?.title} />
             <Container class1="main-product-wrapper py-5 home-wrapper-2">
                 <div className="row">

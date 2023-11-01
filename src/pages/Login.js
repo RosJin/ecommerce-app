@@ -12,9 +12,9 @@ import { loginUser } from "../features/user/userSlice";
 const loginSchema = yup.object({
     email: yup
         .string()
-        .email("Email Should be valid")
-        .required("Email Address is Required"),
-    password: yup.string().required("Password is Required"),
+        .email("Email phải hợp lệ")
+        .required("Vui lòng nhập email"),
+    password: yup.string().required("Vui lòng nhập mật khẩu"),
 });
 
 const Login = () => {
@@ -40,13 +40,13 @@ const Login = () => {
 
     return (
         <>
-            <Meta title={"Login"} />
-            <BreadCrumb title="Login" />
+            <Meta title={"Đăng nhập"} />
+            <BreadCrumb title="Đăng nhập" />
             <Container class1="login-wrapper py-5 home-wrapper-2">
                 <div className="row">
                     <div className="col-12">
                         <div className="auth-card">
-                            <h3 className="text-center mb-3">Login</h3>
+                            <h3 className="text-center mb-3">Đăng nhập</h3>
                             <form
                                 action=""
                                 onSubmit={formik.handleSubmit}
@@ -67,7 +67,7 @@ const Login = () => {
                                     className="mt-1"
                                     type="password"
                                     name="password"
-                                    placeholder="Password"
+                                    placeholder="Mật khẩu"
                                     val={formik.values.password}
                                     onCh={formik.handleChange("password")}
                                     onBl={formik.handleBlur("password")}
@@ -78,18 +78,18 @@ const Login = () => {
                                 </div>
                                 <div>
                                     <Link to="/forgot-password">
-                                        Forgot Password
+                                        Quên mật khẩu / Đổi mật khẩu
                                     </Link>
                                     <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
                                         <button
                                             className="button border-0"
                                             type="submit">
-                                            Login
+                                            Đăng nhập
                                         </button>
                                         <Link
                                             to="/signup"
                                             className="button signup">
-                                            SignUp
+                                            Đăng ký
                                         </Link>
                                     </div>
                                 </div>

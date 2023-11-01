@@ -12,8 +12,8 @@ import { forgotPasswordToken } from "../features/user/userSlice";
 const emailSchema = yup.object({
     email: yup
         .string()
-        .email("Email Should be valid")
-        .required("Email Address is Required"),
+        .email("Email phải hợp lệ")
+        .required("Vui lòng nhập email"),
 });
 
 const Forgotpassword = () => {
@@ -32,17 +32,17 @@ const Forgotpassword = () => {
 
     return (
         <>
-            <Meta title={"Forgot Password"} />
-            <BreadCrumb title="Forgot Password" />
+            <Meta title={"Quên mật khẩu/Đổi mật khẩu"} />
+            <BreadCrumb title="Quên mật khẩu/Đổi mật khẩu" />
             <Container class1="login-wrapper py-5 home-wrapper-2">
                 <div className="row">
                     <div className="col-12">
                         <div className="auth-card">
                             <h3 className="text-center mb-3">
-                                Reset Your Password
+                                Quên mật khẩu/Đổi mật khẩu
                             </h3>
                             <p className="text-center mt-2 mb-3">
-                                We will send you an email to reset your password
+                                Chúng tôi sẽ gửi cho bạn 1 email để  đổi mật khẩu
                             </p>
                             <form
                                 onSubmit={formik.handleSubmit}
@@ -65,9 +65,9 @@ const Forgotpassword = () => {
                                         <button
                                             className="button border-0"
                                             type="submit">
-                                            Submit
+                                            Gửi
                                         </button>
-                                        <Link to="/login">Cancel</Link>
+                                        <Link to="/login">Hủy</Link>
                                     </div>
                                 </div>
                             </form>

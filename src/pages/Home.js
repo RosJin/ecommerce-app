@@ -217,7 +217,7 @@ const Home = () => {
                                             </div>
                                             <div className="product-image">
                                                 <img
-                                                    src={item?.images.url}
+                                                    src={item?.images[0].url}
                                                     className="img-fluid"
                                                     alt="product imag"
                                                 />
@@ -243,7 +243,7 @@ const Home = () => {
                                                     activeColor="#ffd700"
                                                 />
                                                 <p className="price">
-                                                    $ {item.price}
+                                                    {item.price.toLocaleString('vi-VN')} đ
                                                 </p>
                                             </div>
                                             <div className="action-bar position-absolute">
@@ -358,7 +358,7 @@ const Home = () => {
                                         brand={item?.brand}
                                         title={item?.title}
                                         totalrating={item?.totalrating.toString()}
-                                        price={item?.price}
+                                        price={item?.price.toLocaleString('vi-VN')}
                                         sold={item?.sold}
                                         quantity={item?.quantity}
                                     />
@@ -422,7 +422,7 @@ const Home = () => {
                                                     activeColor="#ffd700"
                                                 />
                                                 <p className="price">
-                                                    $ {item.price}
+                                                    {item.price.toLocaleString('vi-VN')} đ
                                                 </p>
                                             </div>
                                             <div className="action-bar position-absolute">
@@ -534,7 +534,7 @@ const Home = () => {
                                             id={item?._id}
                                             title={item?.title}
                                             description={item?.description}
-                                            image={item?.images.url}
+                                            image={item?.images[0].url}
                                             date={moment(
                                                 item?.createdAt,
                                             ).format("MMMM Do YYYY, h:mm a")}

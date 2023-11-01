@@ -168,10 +168,10 @@ const Checkout = () => {
                                 <ol className="breadcrumb">
                                     <li className="breadcrumb-item">
                                         <Link className="text-dark" to="/cart">
-                                            Cart
+                                            Giỏ hàng
                                         </Link>
                                     </li>
-                                    &nbsp; /
+                                    {/* &nbsp; /
                                     <li
                                         className="breadcrumb-item active total-price"
                                         aria-current="page">
@@ -180,24 +180,24 @@ const Checkout = () => {
                                     &nbsp; /
                                     <li className="breadcrumb-item active total-price">
                                         Shipping
-                                    </li>
+                                    </li> */}
                                     &nbsp; /
                                     <li
                                         className="breadcrumb-item active total-price"
                                         aria-current="page">
-                                        Payment
+                                        Thanh toán
                                     </li>
                                 </ol>
                             </nav>
-                            <h4 className="title total">Contact Information</h4>
+                            <h4 className="title total">Thông tin liên hệ</h4>
                             <p className="user-details total">
                                 Huy Nguyen (huyhoang.hn462@gmail.com)
                             </p>
-                            <h4 className="mb-3">Shipping Address</h4>
+                            <h4 className="mb-3">Địa chỉ giao hàng</h4>
                             <form onSubmit={formik.handleSubmit}
                                 action=""
                                 className="d-flex gap-15 flex-wrap justify-content-between">
-                                <div className="w-100">
+                                {/* <div className="w-100">
                                     <select
                                         name="country"
                                         onChange={formik.handleChange("country")}
@@ -217,11 +217,11 @@ const Checkout = () => {
                                             formik.touched.country && formik.errors.country
                                         }
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="flex-grow-1">
                                     <input
                                         type="text"
-                                        placeholder="First Name"
+                                        placeholder="Tên"
                                         className="form-control"
                                         name="firstName"
                                         onChange={formik.handleChange("firstName")}
@@ -237,7 +237,7 @@ const Checkout = () => {
                                 <div className="flex-grow-1">
                                     <input
                                         type="text"
-                                        placeholder="Last Name"
+                                        placeholder="Họ"
                                         className="form-control"
                                         name="lastName"
                                         onChange={formik.handleChange("lastName")}
@@ -253,7 +253,7 @@ const Checkout = () => {
                                 <div className="w-100">
                                     <input
                                         type="text"
-                                        placeholder="Address"
+                                        placeholder="Địa chỉ"
                                         className="form-control"
                                         name="address"
                                         onChange={formik.handleChange("address")}
@@ -269,7 +269,7 @@ const Checkout = () => {
                                 <div className="w-100">
                                     <input
                                         type="text"
-                                        placeholder="Apartment, Suite, etc"
+                                        placeholder="Số điện thoại người nhận"
                                         className="form-control"
                                         name="other"
                                         onChange={formik.handleChange("other")}
@@ -281,7 +281,7 @@ const Checkout = () => {
                                 <div className="flex-grow-1">
                                     <input
                                         type="text"
-                                        placeholder="City"
+                                        placeholder="Thành phố"
                                         className="form-control"
                                         name="city"
                                         onChange={formik.handleChange("city")}
@@ -294,7 +294,7 @@ const Checkout = () => {
                                         }
                                     </div>
                                 </div>
-                                <div className="flex-grow-1">
+                                {/* <div className="flex-grow-1">
                                     <select
                                         name="state"
                                         onChange={formik.handleChange("state")}
@@ -330,17 +330,17 @@ const Checkout = () => {
                                             formik.touched.pincode && formik.errors.pincode
                                         }
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="w-100">
                                     <div className="d-flex justify-content-between align-items-center">
                                         <Link to="/cart" className="text-dark">
                                             <BiArrowBack className="me-2" />
-                                            Return to Cart
+                                            Trở về giỏ hàng
                                         </Link>
                                         <Link to="/cart" className="button">
-                                            Continue to Shopping
+                                            Tiếp tục mua sắm
                                         </Link>
-                                        <button className="button" type="submit" >Place Order</button>
+                                        <button className="button" type="submit" >Đặt hàng</button>
                                     </div>
                                 </div>
                             </form>
@@ -367,7 +367,7 @@ const Checkout = () => {
                                                     <img
                                                         src={
                                                             item?.productId
-                                                                ?.images?.url
+                                                                ?.images[0].url
                                                         }
                                                         width={100}
                                                         height={100}
@@ -394,17 +394,17 @@ const Checkout = () => {
                         </div>
                         <div className="border-bottom py-4">
                             <div className="d-flex justify-content-between align-items-center">
-                                <p className="total">Subtotal</p>
-                                <p className="total-price">$ {totalAmount ? totalAmount : 0}</p>
+                                <p className="total">Giá tiền</p>
+                                <p className="total-price">{totalAmount ? totalAmount : 0} đ</p>
                             </div>
                             <div className="d-flex justify-content-between align-items-center">
-                                <p className="mb-0 total">Shipping</p>
-                                <p className="mb-0 total-price">$ 5</p>
+                                <p className="mb-0 total">Phí vận chuyển</p>
+                                <p className="mb-0 total-price"> 25.000 đ</p>
                             </div>
                             <div className="d-flex justify-content-between align-items-center border-bottom py-4">
-                                <h4 className="total">Total</h4>
+                                <h4 className="total">Tổng giá tiền</h4>
                                 <h5 className="total-price">
-                                    $ {totalAmount ? totalAmount + 5 : 0}
+                                    {totalAmount ? totalAmount + 25000 : 0} đ
                                 </h5>
                             </div>
                         </div>

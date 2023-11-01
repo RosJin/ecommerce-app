@@ -10,14 +10,14 @@ import { registerUser } from "../features/user/userSlice";
 import { useNavigate } from "react-router-dom";
 
 const signUpSchema = yup.object({
-    firstname: yup.string().required("First Name is Required"),
-    lastname: yup.string().required("Last Name is Required"),
+    firstname: yup.string().required("Vui lòng nhập tên"),
+    lastname: yup.string().required("Vui lòng nhập họ"),
     email: yup
         .string()
-        .email("Email Should be valid")
-        .required("Email Address is Required"),
-    mobile: yup.string().required("Mobile No is Required"),
-    password: yup.string().required("Password is Required"),
+        .email("Email phải hợp lệ")
+        .required("Vui lòng nhập email"),
+    mobile: yup.string().required("Vui lòng nhập số điện thoại"),
+    password: yup.string().required("Vui lòng nhập mật khẩu"),
 });
 
 const Signup = () => {
@@ -46,13 +46,13 @@ const Signup = () => {
 
     return (
         <>
-            <Meta title={"Sign Up"} />
-            <BreadCrumb title="Sign Up" />
+            <Meta title={"Đăng ký"} />
+            <BreadCrumb title="Đăng ký" />
             <Container class1="login-wrapper py-5 home-wrapper-2">
                 <div className="row">
                     <div className="col-12">
                         <div className="auth-card">
-                            <h3 className="text-center mb-3">Sign Up</h3>
+                            <h3 className="text-center mb-3">Đăng ký</h3>
                             <form
                                 action=""
                                 onSubmit={formik.handleSubmit}
@@ -60,7 +60,7 @@ const Signup = () => {
                                 <CustomInput
                                     type="text"
                                     name="firstname"
-                                    placeholder="First Name"
+                                    placeholder="Họ"
                                     val={formik.values.firstname}
                                     onCh={formik.handleChange("firstname")}
                                     onBl={formik.handleBlur("firstname")}
@@ -72,7 +72,7 @@ const Signup = () => {
                                 <CustomInput
                                     type="text"
                                     name="lastname"
-                                    placeholder="Last Name"
+                                    placeholder="Tên"
                                     val={formik.values.lastname}
                                     onCh={formik.handleChange("lastname")}
                                     onBl={formik.handleBlur("lastname")}
@@ -96,7 +96,7 @@ const Signup = () => {
                                 <CustomInput
                                     type="tel"
                                     name="mobile"
-                                    placeholder="Mobile Number"
+                                    placeholder="Số điện thoại"
                                     val={formik.values.mobile}
                                     onCh={formik.handleChange("mobile")}
                                     onBl={formik.handleBlur("mobile")}
@@ -109,7 +109,7 @@ const Signup = () => {
                                     className="mt-1"
                                     type="password"
                                     name="password"
-                                    placeholder="Password"
+                                    placeholder="Mật khẩu"
                                     val={formik.values.password}
                                     onCh={formik.handleChange("password")}
                                     onBl={formik.handleBlur("password")}
@@ -121,7 +121,7 @@ const Signup = () => {
                                 <div>
                                     <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
                                         <button className="button border-0">
-                                            Sign Up
+                                            Đăng ký
                                         </button>
                                     </div>
                                 </div>

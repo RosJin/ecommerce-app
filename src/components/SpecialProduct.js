@@ -26,7 +26,7 @@ const SpecialProduct = (props) => {
                             activeColor="#ffd700"
                         />
                         <p className="price">
-                            <span className="red-p">$ {price.toLocaleString('vi-VN')}</span> &nbsp;{" "}
+                            <span className="red-p">{price.toLocaleString('vi-VN')} đ</span>
                             {/* <strike>$200</strike> */}
                         </p>
                         {/* <div className="discount-till d-flex align-items-center gap-10">
@@ -59,7 +59,7 @@ const SpecialProduct = (props) => {
                                     aria-valuemax={sold+quantity}></div>
                             </div>
                         </div>
-                        <Link className="button" to={`/product/`+id}>View</Link>
+                        <Link className="button" to={`/product/`+id}>Xem sản phẩm</Link>
                     </div>
                 </div>
             </div>
