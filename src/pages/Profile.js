@@ -6,8 +6,8 @@ import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "../features/user/userSlice";
 import { FiEdit } from "react-icons/fi";
-// import {useNavigate} from 'react-router-dom'
-// import Resetpassword from "./Resetpassword";
+import {useNavigate} from 'react-router-dom'
+import ChangePassword from "./ChangePassword";
 
 const profileSchema = yup.object({
     firstname: yup.string().required("Vui lòng nhập tên"),
@@ -54,11 +54,11 @@ const Profile = () => {
             setEdit(true);
         },
     });
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
-    // const handleChangePass = () =>{
-    //     navigate("/reset-password/:token")
-    // }
+    const handleChangePass = () =>{
+        navigate("/change-password")
+    }
 
     return (
         <>
@@ -162,6 +162,10 @@ const Profile = () => {
                                         formik.errors.mobile}
                                 </div>
                             </div>
+                                <div className="mb-3">
+                                    <button onClick={handleChangePass}>Đổi mật khẩu</button>
+                                </div>
+                            
 
                             {edit === false && (
                                 <button
@@ -170,7 +174,7 @@ const Profile = () => {
                                     Lưu
                                 </button>
                             )}
-                            {/* <button onClick={handleChangePass}>Đổi mật khẩu</button> */}
+                            
                         </form>
                     </div>
                 </div>

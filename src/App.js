@@ -25,6 +25,7 @@ import { PrivateRoutes } from "./routing/PrivateRoutes";
 import { OpenRoutes } from "./routing/OpenRoutes";
 import Orders from "./pages/Orders";
 import Profile from "./pages/Profile";
+import ChangePassword from "./pages/ChangePassword";
 
 function App() {
     return (
@@ -94,6 +95,10 @@ function App() {
                         <Route
                             path="forgot-password"
                             element={<Forgotpassword />}
+                        />
+                        <Route
+                            path="change-password"
+                            element={<ChangePassword />}
                         />
                         <Route
                             path="signup"

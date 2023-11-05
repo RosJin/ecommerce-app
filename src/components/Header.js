@@ -7,6 +7,7 @@ import "react-bootstrap-typeahead/css/Typeahead.css";
 import { getAProduct } from "../features/products/productSlice";
 import { getUserCart } from "../features/user/userSlice";
 import { BiLogOutCircle } from "react-icons/bi";
+import logo from "../images/logo.png"
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -66,17 +67,20 @@ const Header = () => {
         localStorage.clear();
         window.location.reload();
     };
+    const isLoggedIn = authState?.user !== null;
     return (
         <>
             <header className="header-top-strip">
-                <img src="./images/unnamed.webp" className="w-100"alt="" />
+                <img src="./images/unnamed.webp" className="w-100" alt="" />
             </header>
             <header className="header-upper py-3">
                 <div className="container-xxl">
                     <div className="row">
                         <div className="col-2">
                             <h2>
-                                <Link className="text-white">Huy</Link>
+                                <Link className="text-white">
+                                    <img src={logo} className="logo" alt="" />
+                                </Link>
                             </h2>
                         </div>
                         <div className="col-5">
@@ -137,19 +141,23 @@ const Header = () => {
                                             </p>
                                         ) : (
                                             <p className="mb-0">
-                                                Xin chào{" "} <br />
+                                                Xin chào <br />
                                                 {authState?.user?.firstname}
                                             </p>
                                         )}
                                     </Link>
                                 </div>
                                 <div>
-                                    <Link
-                                        className="d-flex align-items-center gap-10 text-white"
-                                        onClick={handleLogout}>
-                                        <BiLogOutCircle className="fs-2"/>
-                                        Đăng xuất
-                                    </Link>
+                                    {isLoggedIn && (
+                                        <div>
+                                            <Link
+                                                className="d-flex align-items-center gap-10 text-white"
+                                                onClick={handleLogout}>
+                                                <BiLogOutCircle className="fs-2" />
+                                                Đăng xuất
+                                            </Link>
+                                        </div>
+                                    )}
                                 </div>
                                 <div>
                                     <Link
@@ -162,9 +170,7 @@ const Header = () => {
                                                     ? cartState?.length
                                                     : 0}
                                             </span>
-                                            <p className="mb-0">
-                                                Giỏ hàng
-                                            </p>
+                                            <p className="mb-0">Giỏ hàng</p>
                                         </div>
                                     </Link>
                                 </div>
@@ -227,7 +233,9 @@ const Header = () => {
                                         <NavLink to="/my-orders">
                                             Tra cứu đơn hàng
                                         </NavLink>
-                                        <NavLink to="/blogs">Tin công nghệ</NavLink>
+                                        <NavLink to="/blogs">
+                                            Tin công nghệ
+                                        </NavLink>
                                         <NavLink to="/contact">Liên hệ</NavLink>
                                     </div>
                                 </div>

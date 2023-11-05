@@ -5,9 +5,11 @@ import Container from "../components/Container";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserProductWishlist } from "../features/user/userSlice";
 import { addToWishlist } from "../features/products/productSlice";
+import { Link, useNavigate } from "react-router-dom";
 
 const Wishlist = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         getWishlistFromDb();
@@ -17,7 +19,9 @@ const Wishlist = () => {
         dispatch(getUserProductWishlist());
     };
 
-    const wishlistState = useSelector((state) => state.auth?.wishlist?.wishlist );
+    const wishlistState = useSelector(
+        (state) => state.auth?.wishlist?.wishlist,
+    );
 
     const removeFromWishlist = (id) => {
         dispatch(addToWishlist(id));
@@ -33,7 +37,9 @@ const Wishlist = () => {
             <Container class1="wishlist-wrapper home-wrapper-2 py-5">
                 <div className="row">
                     {wishlistState?.length === 0 && (
-                        <div className="text-center fs-3">Không có sản phẩm nào</div>
+                        <div className="text-center fs-3">
+                            Không có sản phẩm nào
+                        </div>
                     )}
                     {wishlistState?.map((item, index) => {
                         return (
@@ -47,17 +53,19 @@ const Wishlist = () => {
                                         alt="cross"
                                         className="position-absolute cross img-fluid"
                                     />
-                                    <div className="wishlist-card-image">
-                                        <img
-                                            src={
-                                                item?.images.url
-                                                    ? item?.images.url
-                                                    : "images/watch.jpg"
-                                            }
-                                            alt="watch"
-                                            className="img-fluid w-100"
-                                        />
-                                    </div>
+                                    <Link to={`/product/${item?._id}`}>
+                                        <div className="wishlist-card-image">
+                                            <img
+                                                src={
+                                                    item?.images[0].url
+                                                        ? item?.images[0].url
+                                                        : "images/watch.jpg"
+                                                }
+                                                alt="watch"
+                                                className="img-fluid w-100"
+                                            />
+                                        </div>
+                                    </Link>
                                     <div className="py-3 px-3">
                                         <h5 className="title">{item?.title}</h5>
                                         <h6 className="price">

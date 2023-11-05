@@ -54,7 +54,7 @@ const OurStore = () => {
                 <div className="row">
                     <div className="col-3">
                         <div className="filter-card mb-3">
-                            <h3 className="filter-title">Shop By Categories</h3>
+                            <h3 className="filter-title">Theo loại sản phẩm</h3>
                             <div>
                                 <ul className="ps-0">
                                     {categories &&
@@ -75,22 +75,22 @@ const OurStore = () => {
                             </div>
                         </div>
                         <div className="filter-card mb-3">
-                            <h3 className="filter-title">Filter By</h3>
+                            <h3 className="filter-title">Bộ lọc tìm kiếm</h3>
                             <div>
-                                <h5 className="sub-title">Price</h5>
+                                <h5 className="sub-title">Khoảng giá</h5>
                                 <div className="d-flex align-items-center gap-10">
                                     <div className="form-floating">
                                         <input
                                             type="number"
                                             className="form-control"
                                             id="floatingInput"
-                                            placeholder="From"
+                                            placeholder="Từ"
                                             onChange={(e) =>
                                                 setMinPrice(e.target.value)
                                             }
                                         />
                                         <label htmlFor="floatingInput">
-                                            From
+                                            Từ
                                         </label>
                                     </div>
                                     <div className="form-floating">
@@ -98,19 +98,19 @@ const OurStore = () => {
                                             type="number"
                                             className="form-control"
                                             id="floatingInput1"
-                                            placeholder="To"
+                                            placeholder="Đến"
                                             onChange={(e) =>
                                                 setMaxPrice(e.target.value)
                                             }
                                         />
                                         <label htmlFor="floatingInput1">
-                                            To
+                                            Đến
                                         </label>
                                     </div>
                                 </div>
                             </div>
                             <div className="mt-4 mb-3">
-                                <h3 className="sub-title">Product Tag</h3>
+                                <h3 className="sub-title">Phân loại sản phẩm</h3>
                                 <div>
                                     <div className="product-tags d-flex flex-wrap align-items-center gap-10">
                                         {tags &&
@@ -132,7 +132,7 @@ const OurStore = () => {
                                 </div>
                             </div>
                             <div className=" mb-3">
-                                <h3 className="sub-title">Product Brands</h3>
+                                <h3 className="sub-title">Thương hiệu sản phẩm</h3>
                                 <div>
                                     <div className="product-tags d-flex flex-wrap align-items-center gap-10">
                                         {brands &&
@@ -162,7 +162,7 @@ const OurStore = () => {
                                     <p
                                         className="mb-0 d-block"
                                         style={{ width: "100px" }}>
-                                        Sort By:
+                                        Sắp xếp theo:
                                     </p>
                                     <select
                                         name=""
@@ -170,27 +170,27 @@ const OurStore = () => {
                                         onChange={(e) => setSort(e.target.value)}
                                         className="form-control form-select">
                                         <option value="title">
-                                            Alpabetically, A-Z
+                                            Từ A đến Z
                                         </option>
                                         <option value="-title">
-                                            Alphabetically, Z-A
+                                            Từ Z đến A
                                         </option>
                                         <option value="price">
-                                            Price, low to high
+                                            Giá từ thấp đến cao
                                         </option>
                                         <option value="-price">
-                                            Price, high to low
+                                            Giá từ cao đến thấp
                                         </option>
                                         <option value="createdAt">
-                                            Date, old to new
+                                            Thời gian cũ nhất
                                         </option>
                                         <option value="-createdAt">
-                                            Date, new to old
+                                            Thời gian mới nhất 
                                         </option>
                                     </select>
                                 </div>
                                 <div className="d-flex align-items-center gap-10">
-                                    <p className="totalproducts">21 Products</p>
+                                    <p className="totalproducts m-3">Tổng số sản phẩm {productState?.length}</p>
                                     <div className="d-flex gap-10 align-items-center grid">
                                         <img
                                             onClick={() => {

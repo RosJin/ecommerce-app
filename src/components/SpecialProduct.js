@@ -1,19 +1,27 @@
 import React from "react";
 import ReactStars from "react-rating-stars-component";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const SpecialProduct = (props) => {
+    const productState = useSelector((state) => state.product?.product);
     const { title, brand, totalrating, price, sold, quantity, id } = props;
     return (
         <div className="col-6 mb-3">
             <div className="special-product-card">
                 <div className="d-flex justify-content-between">
                     <div>
-                        <img
-                            src="images/watch.jpg"
-                            className="img-fluid"
-                            alt="watch"
-                        />
+                        {productState &&
+                            productState.images?.map((item, index) => {
+                                return (
+                                    <img
+                                        key={index}
+                                        src={item[0]?.url}
+                                        className="img-fluid"
+                                        alt="watch"
+                                    />
+                                );
+                            })}
                     </div>
                     <div className="special-product-content">
                         <h5 className="brand">{brand}</h5>
@@ -26,7 +34,9 @@ const SpecialProduct = (props) => {
                             activeColor="#ffd700"
                         />
                         <p className="price">
-                            <span className="red-p">{price.toLocaleString('vi-VN')} đ</span>
+                            <span className="red-p">
+                                {price.toLocaleString("vi-VN")} đ
+                            </span>
                             {/* <strike>$200</strike> */}
                         </p>
                         {/* <div className="discount-till d-flex align-items-center gap-10">
@@ -53,13 +63,22 @@ const SpecialProduct = (props) => {
                                 <div
                                     className="progress-bar"
                                     role="progressbar"
-                                    style={{ width: quantity / quantity + sold * 100 + "%" }}
-                                    aria-valuenow={quantity / quantity + sold * 100}
+                                    style={{
+                                        width:
+                                            quantity / quantity +
+                                            sold * 100 +
+                                            "%",
+                                    }}
+                                    aria-valuenow={
+                                        quantity / quantity + sold * 100
+                                    }
                                     aria-valuemin={quantity}
-                                    aria-valuemax={sold+quantity}></div>
+                                    aria-valuemax={sold + quantity}></div>
                             </div>
                         </div>
-                        <Link className="button" to={`/product/`+id}>Xem sản phẩm</Link>
+                        <Link className="button" to={`/product/` + id}>
+                            Xem sản phẩm
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -10,22 +10,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { createQuery, creatrQuery } from "../features/contact/contactSlice"
 
 const contactSchema = yup.object({
-    name: yup.string().required("Name is Required"),
+    name: yup.string().required("Vui lòng nhập tên"),
     email: yup
         .string()
         .nullable()
-        .email("Email should be valid")
-        .required("Email is Required"),
+        .email("Email phải hợp lệ")
+        .required("Vui lòng nhập email"),
     mobile: yup
         .string()
         .default("")
         .nullable()
-        .required("Mobile Number is Required"),
+        .required("Vui lòng nhập số điện thoại"),
     comment: yup
         .string()
         .default("")
         .nullable()
-        .required("Comment is Required"),
+        .required("Vui lòng nhập nhận xét"),
 });
 
 const Contact = () => {
@@ -45,8 +45,8 @@ const Contact = () => {
 
     return (
         <>
-            <Meta title={"Contact Us"} />
-            <BreadCrumb title="Contact Us" />
+            <Meta title={"Liên hệ"} />
+            <BreadCrumb title="Liên hệ" />
             <Container class1="contact-wrapper py-5 home-wrapper-2">
                 <div className="row">
                     <div className="col-12">
@@ -62,7 +62,7 @@ const Contact = () => {
                     <div className="col-12 mt-5">
                         <div className="contact-inner-wrapper d-flex justify-content-between">
                             <div>
-                                <h3 className="contact-title">Contact</h3>
+                                <h3 className="contact-title">Liên hệ</h3>
                                 <form
                                     onSubmit={formik.handleSubmit}
                                     action=""
@@ -71,7 +71,7 @@ const Contact = () => {
                                         <input
                                             type="text"
                                             className="form-control"
-                                            placeholder="Name"
+                                            placeholder="Tên"
                                             name="name"
                                             onChange={formik.handleChange(
                                                 "name",
@@ -105,7 +105,7 @@ const Contact = () => {
                                         <input
                                             type="tel"
                                             className="form-control"
-                                            placeholder="Mobile Number"
+                                            placeholder="Số điện thoại"
                                             name="mobile"
                                             onChange={formik.handleChange(
                                                 "mobile",
@@ -124,7 +124,7 @@ const Contact = () => {
                                             className="w-100 form-control"
                                             cols="30"
                                             rows="4"
-                                            placeholder="Comment"
+                                            placeholder="Nhận xét"
                                             name="comment"
                                             onChange={formik.handleChange(
                                                 "comment",
@@ -142,14 +142,14 @@ const Contact = () => {
                                     </div>
                                     <dir>
                                         <button className="button border-0">
-                                            Submit
+                                            Gửi
                                         </button>
                                     </dir>
                                 </form>
                             </div>
                             <div>
                                 <h3 className="contact-title mb-4">
-                                    Get in touch with us
+                                    Hãy liên hệ với chúng tôi
                                 </h3>
                                 <div>
                                     <ul className="ps-0">
@@ -174,7 +174,7 @@ const Contact = () => {
                                         <li className="mb-3 d-flex gap-15 align-items-center">
                                             <BiInfoCircle className="fs-5" />
                                             <p className="mb-0">
-                                                Monday - Friday 10 AM - 8 PM
+                                                Thứ Hai- Chủ Nhật 08:00 - 22:00 
                                             </p>
                                         </li>
                                     </ul>

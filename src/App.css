@@ -60,7 +60,11 @@ a {
     color: #131921;
 }
 /* Header Part */
-
+.logo{
+    width: 140px;
+    max-width: 100%;
+    height: 32px;
+}
 .header-top-strip {
     border-bottom: 1px solid var(--color-3b4149);
     background-color: var(--color-131921);
@@ -619,45 +623,45 @@ footer .input-group-text {
     background-color: white;
     border-radius: 10px;
 }
-.main-product-image > div{ 
+.main-product-image > div {
     border: 1px solid rgba(0, 0, 0, 0.25);
 }
-.main-product-image img{
-    width: 100% !important;
-    height: 600px !important;
+.main-product-image img {
+    max-width: 100% !important;
+    height: 100% !important;
     object-fit: cover;
 }
-.other-product-images{
+.other-product-images {
     background-color: white;
     padding: 20px;
 }
-.other-product-images > div{
+.other-product-images > div {
     padding: 20px;
     width: 48%;
     border: 1px solid rgba(0, 0, 0, 0.25);
 }
-.main-product-image .js-image-zoom__zoomed-area{
+.main-product-image .js-image-zoom__zoomed-area {
     left: 70px !important;
     padding: 10px;
     background-color: white;
     border-radius: 10px;
     z-index: 999;
 }
-.main-product-details{
+.main-product-details {
     padding: 30px 20px;
     background-color: white;
     border-radius: 10px;
 }
-.border-bottom{
+.border-bottom {
     border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 }
-.main-product-details h3.title{
+.main-product-details h3.title {
     font-size: 18px;
     font-weight: 600;
     color: var(--color-1c1c1b);
     margin-bottom: 10px;
 }
-.main-product-details p.price{
+.main-product-details p.price {
     font-size: 16px;
     line-height: 20px;
     font-weight: 600;
@@ -665,22 +669,21 @@ footer .input-group-text {
     margin-bottom: 10px;
 }
 .main-product-details a.review-btn,
-.t-review{
+.t-review {
     color: var(--color-777777);
     font-size: 13px;
 }
-.product-heading{
+.product-heading {
     font-size: 14px;
     color: var(--color-1c1c1b);
     margin-bottom: 0px;
 }
-.product-data{
+.product-data {
     font-size: 13px;
     color: var(--color-777777);
     margin-bottom: 0px;
-  
 }
-.main-product-details a{
+.main-product-details a {
     font-size: 14px;
     color: var(--color-777777);
 }
@@ -688,46 +691,46 @@ footer .input-group-text {
 
 /* Cart Page */
 .cart-header,
-.cart-data{
+.cart-data {
     border-bottom: 1px solid #eaeaea;
 }
-.cart-header h4{
+.cart-header h4 {
     font-size: 13px;
     color: var(--color-777777);
 }
-.cart-col-1{
+.cart-col-1 {
     width: 40%;
 }
-.cart-col-1 p{
+.cart-col-1 p {
     color: var(--color-777777);
     font-size: 14px;
 }
-.cart-col-2{
+.cart-col-2 {
     width: 10%;
 }
-.cart-col-3{
+.cart-col-3 {
     width: 15%;
 }
-.cart-col-4{
+.cart-col-4 {
     width: 15%;
 }
-.cart-data h5.price{
+.cart-data h5.price {
     font-size: 14px;
     color: var(--color-1c1c1b);
 }
 /* Cart Page end here */
 
 /* Shipping Page */
-.total{
+.total {
     font-size: 14px;
     color: var(--color-1c1c1b);
 }
-.total-price{
+.total-price {
     font-size: 16px;
     color: var(--color-777777);
 }
 /* Shipping Page end here */
-.error{
+.error {
     color: red;
     font-size: 12px;
 }
@@ -735,4 +738,47 @@ footer .input-group-text {
 .carousel-image {
     width: 100%; /* Đảm bảo hình ảnh nằm trong kích thước của container */
     height: auto; /* Đảm bảo tỷ lệ khung hình không bị biến đổi */
-  }
+}
+
+/* imagezoom */
+.image-zoom-container {
+    position: relative;
+    max-width: 100%; 
+    max-height: 150%;
+}
+
+.image-zoom {
+    transition: transform 0.3s ease-in-out;
+    max-width: 50%;
+    max-height: 50%;
+    cursor: pointer;
+}
+
+.image-zoom.hidden {
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+.footer-link ul{
+    list-style: none;
+}
