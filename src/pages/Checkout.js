@@ -14,10 +14,10 @@ const shippingSchema = yup.object({
     firstName: yup.string().required("First Name is Required"),
     lastName: yup.string().required("Last Name is Required"),
     address: yup.string().required("Address Details are Required"),
-    state: yup.string().required("State is Required"),
+    // state: yup.string().required("State is Required"),
     city: yup.string().required("City is Required"),
-    country: yup.string().required("Country is Required"),
-    pincode: yup.number().required("Pincode is Required")
+    // country: yup.string().required("Country is Required"),
+    // pincode: yup.number().required("Pincode is Required")
 });
 
 const Checkout = () => {
@@ -66,10 +66,10 @@ const Checkout = () => {
             firstName:"",
             lastName:"",
             address:"",
-            state:"",
+            // state:"",
             city:"",
-            country:"",
-            pincode:"",
+            // country:"",
+            // pincode:"",
             other:""
         },
         validationSchema: shippingSchema,
@@ -269,7 +269,7 @@ const Checkout = () => {
                                 <div className="w-100">
                                     <input
                                         type="text"
-                                        placeholder="Số điện thoại người nhận"
+                                        placeholder="Ghi chú"
                                         className="form-control"
                                         name="other"
                                         onChange={formik.handleChange("other")}
