@@ -4,24 +4,14 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const SpecialProduct = (props) => {
-    const productState = useSelector((state) => state.product?.product);
-    const { title, brand, totalrating, price, sold, quantity, id } = props;
+    const { title, brand, totalrating, price, sold, quantity, id, image } =
+        props;
     return (
         <div className="col-6 mb-3">
             <div className="special-product-card">
                 <div className="d-flex justify-content-between">
                     <div>
-                        {productState &&
-                            productState.images?.map((item, index) => {
-                                return (
-                                    <img
-                                        key={index}
-                                        src={item[0]?.url}
-                                        className="img-fluid"
-                                        alt="watch"
-                                    />
-                                );
-                            })}
+                        <img src={image} className="img-special" alt="watch" />
                     </div>
                     <div className="special-product-content">
                         <h5 className="brand">{brand}</h5>
@@ -58,7 +48,7 @@ const SpecialProduct = (props) => {
                             </div>
                         </div> */}
                         <div className="prod-count my-3">
-                            <p>Products: {quantity}</p>
+                            <p>Số lượng sản phẩm: {quantity}</p>
                             <div className="progress">
                                 <div
                                     className="progress-bar"

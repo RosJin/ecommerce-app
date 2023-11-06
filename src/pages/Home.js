@@ -355,6 +355,7 @@ const Home = () => {
                                     <SpecialProduct
                                         key={index}
                                         id={item?._id}
+                                        image={item?.images[0]?.url}
                                         brand={item?.brand}
                                         title={item?.title}
                                         totalrating={item?.totalrating.toString()}
